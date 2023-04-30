@@ -4,7 +4,7 @@ module.exports = {
   // Get all thoughts
   async getAllThoughts(req, res) {
     try {
-      const thoughts = await Thought.find().sort({ createdAt: -1 }); //display most recently created
+      const thoughts = await Thought.find().sort({ createdAt: -1 }); 
       res.json(thoughts);
     } catch (err) {
       res.status(500).json(err);
@@ -33,7 +33,7 @@ module.exports = {
     try {
       const thought = await Thought.create(req.body);
 
-      // Add the created thought's _id to the associated user's thoughts array
+      
       const user = await User.findByIdAndUpdate(
         { _id: req.body.userId },
         { $addToSet: { thoughts: thought._id } },
@@ -42,7 +42,7 @@ module.exports = {
 
       if (!user) {
         return res.status(404).json({
-          message: "Thought created, but found no user with that ID",
+          message: "Thought created  with out id",
         });
       }
 
@@ -90,11 +90,11 @@ module.exports = {
 
       if (!user) {
         return res.status(404).json({
-          message: "Thought created but no user with this id!",
+          message: "Thought created  with out id",
         });
       }
 
-      res.json({ message: "Thought successfully deleted!" });
+      res.json({ message: "successfully deleted!" });
     } catch (err) {
       res.status(500).json(err);
     }

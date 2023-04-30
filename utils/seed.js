@@ -10,7 +10,6 @@ connection.once("open", async () => {
     //drop existing collections
     await User.deleteMany({});
     await Thought.deleteMany({});
-
     await User.create(usersData);
 
     const createdThoughts = await Thought.create(thoughtsData);

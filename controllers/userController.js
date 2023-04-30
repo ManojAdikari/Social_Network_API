@@ -49,7 +49,7 @@ module.exports = {
       // Delete associated thoughts
       await Thought.deleteMany({ _id: { $in: user.thoughts } });
 
-      res.json({ message: "User and associated thoughts deleted!" });
+      res.json({ message: "User deleted!" });
     } catch (err) {
       res.status(500).json(err);
     }
